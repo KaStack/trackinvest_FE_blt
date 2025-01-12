@@ -37,7 +37,7 @@
                     v-model="formData.name"
                     type="text"
                     required
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-secondary focus:ring-secondary"
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-secondary focus:ring-secondary text-gray-700"
                     placeholder="Your name"
                   />
                 </div>
@@ -49,7 +49,7 @@
                     v-model="formData.email"
                     type="email"
                     required
-                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-secondary focus:ring-secondary"
+                    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-secondary focus:ring-secondary text-gray-700"
                     placeholder="you@example.com"
                   />
                 </div>
