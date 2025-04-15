@@ -5,7 +5,13 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@vueuse/motion/nuxt'
-  ],
+  ], runtimeConfig: {
+    SHOW_AUTH_LINKS: false ,
+    public: {
+      apiBase: '',
+      apiKey: ''
+    }
+  },
   app: {
     head: {
       title: 'TrackInvest - Investment Tracking Simplified',

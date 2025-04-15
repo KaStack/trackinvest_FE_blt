@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { usePortfolio } from '~/composables/usePortfolio'
 
-const { portfolioStats } = usePortfolio()
+const { portfolioStats } = await usePortfolio()
+
 </script>
