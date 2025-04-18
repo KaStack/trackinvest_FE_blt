@@ -42,7 +42,9 @@
 </template>
 
 <script setup>
-import { useInvestments } from '~/composables/useInvestments'
 
-const { investments, openAddInvestmentModal } = useInvestments()
+const { getInvestments, openAddInvestmentModal } = useInvestments()
+
+const investments = await getInvestments()
+
 </script>

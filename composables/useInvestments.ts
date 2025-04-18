@@ -1,5 +1,5 @@
-import { useState } from '#app'
-import { usePortfolios } from './usePortfolios'
+
+const { getData } = useApi()
 
 interface Investment {
   id: number
@@ -20,32 +20,10 @@ interface InvestmentForm {
 
 export function useInvestments() {
   const isModalOpen = useState('investmentModalOpen', () => false)
-  const investments = useState<Investment[]>('investments', () => [
-    {
-      id: 1,
-      name: 'Apple Inc.',
-      type: 'Stock',
-      amount: '10000.00',
-      currentValue: '12500.00',
-      gain: 25
-    },
-    {
-      id: 2,
-      name: 'S&P 500 ETF',
-      type: 'Mutual Fund',
-      amount: '25000.00',
-      currentValue: '27500.00',
-      gain: 10
-    },
-    {
-      id: 3,
-      name: 'Bitcoin',
-      type: 'Cryptocurrency',
-      amount: '15000.00',
-      currentValue: '13500.00',
-      gain: -10
-    }
-  ])
+
+  const getInvestments = async()=> {
+    return await getData('/fetch/top_investments', 'GET', null, null)
+  }
 
   const formData = useState<InvestmentForm>('investmentForm', () => ({
     name: '',
@@ -80,17 +58,27 @@ export function useInvestments() {
     }
   }
 
+
+  // Modify add investment functionality later. Currently broken as part of TI-1 as we change the variables of investments
   const addInvestment = () => {
     const newInvestment = {
-      id: investments.value.length + 1,
-      name: formData.value.name,
-      type: formData.value.type,
-      amount: formData.value.amount,
-      currentValue: formData.value.amount,
-      gain: 0
+      id: 0,
+      type:'',
+      amount : 0,
+      currentValue:0,
+      gain:0
     }
     
-    investments.value.push(newInvestment)
+    // {
+    //   id: investments.value.length + 1,
+    //   name: formData.value.name,
+    //   type: formData.value.type,
+    //   amount: formData.value.amount,
+    //   currentValue: formData.value.amount,
+    //   gain: 0
+    // }
+    
+    // investments.value.push(newInvestment)
     
     // If portfolio is selected, add investment to portfolio
     if (formData.value.portfolioId) {
@@ -105,7 +93,7 @@ export function useInvestments() {
   }
 
   return {
-    investments,
+    getInvestments,
     isModalOpen,
     formData,
     investmentTypes,
